@@ -3,3 +3,13 @@
 .navbar .container-fluid {
     background-color: #1ed2b1 ;
   }
+
+/* Formulario  */
+
+.row {
+padding: 30px;
+}
+
+h1{
+    align-content: center;
+}
