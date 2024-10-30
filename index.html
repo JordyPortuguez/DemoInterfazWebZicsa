@@ -46,52 +46,41 @@
 
     <!-- Formulario -->
 
-    <form class="row g-3">
+    <form class="row g-3 container-fluid">
         <h1 class="text-center">Registro de Empleados</h1>
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <label for="inputNombreEmpleado" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="inputNombreEmpleado" placeholder="Nombre Empleado">
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <label for="inputSegundoNombreEmpleado" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control" id="inputSegundoNombreEmpleado" placeholder="Segundo Nombre Empleado">
         </div>
         <div class="col-12">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          <label for="inputApellidos" class="form-label">Apellidos</label>
+          <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos Paterno y Materno">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <label for="inputNroDocumento" class="form-label">Nro Documento</label>
+          <input type="text" class="form-control" id="inputNroDocumento" placeholder="DNI , Carnet de Extranjería">
         </div>
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity">
+        <div class="col-12 d-flex justify-content-center p-4">
+          <button type="submit" class="btn btn-primary">Registrar</button>
         </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">State</label>
-          <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </form>
+    </form>
 
+    <!-- Footer -->
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+      <div class="container">
+        <p>&copy; 2024 Zicsa Contratistas Generales . Todos los derechos reservados.</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#" class="text-white">Política de Privacidad</a></li>
+          <li class="list-inline-item"><a href="#" class="text-white">Términos de Servicio</a></li>
+          <li class="list-inline-item"><a href="#" class="text-white">Contacto</a></li>
+        </ul>
+      </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
