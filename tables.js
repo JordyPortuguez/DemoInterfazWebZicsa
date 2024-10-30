@@ -1,3 +1,4 @@
+// Excel to HTML table
 const excel_file = document.getElementById('excel_file');
 
 excel_file.addEventListener('change', (event) => {
