@@ -5,7 +5,7 @@ nav.navbar{
 }
 
 .navbar .container-fluid {
-    background-color: #b95858 ;
+    background-color: #06d7f3ae ;
   
   }
 
@@ -78,4 +78,31 @@ section {
   .hero-inferior-imagen {
     max-width: 600px;
   }
+}
+
+/* Sobre mi */
+
+#sobre-la-web {
+  height: 500px;
+  padding: 10px;
+}
+
+#sobre-la-web .contenedor {
+  max-width: 600px;
+  text-align: center;
+}
+
+.seccion-oscura {
+  color: white;
+  background-color: #1b1b32;
+}
+
+.seccion-titulo {
+  font-size: 2rem;
+  padding: 15px 0;
+  font-family: 'Rubik Dirt', cursive;
+}
+
+.seccion-texto {
+  font-size: 1.2rem;
 }
