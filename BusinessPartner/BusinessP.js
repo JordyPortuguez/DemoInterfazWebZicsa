@@ -59,12 +59,97 @@ document.getElementById("searchProviderButton").addEventListener("click", functi
 
 
 //POST
-//Declaracion de variables fijas
+/*Declaracion de variables fijas
 const Currency="##";
 const U_BPP_BPTP="TPJ";
 const U_BPP_BPTD="6";
-const U_VS_MAIL_SEC="facturas.contabilidad@zicsa.com";
+const U_VS_MAIL_SEC="facturas.contabilidad@zicsa.com";*/
 
+function createBusinessPartner(businessPartnerData) {
+  // Verificar si la sesión es válida
+  if (!sessionId) { // Comprueba si la sesión no está inicializada o ha expirado
+    console.error("Sesión no válida. Reautenticando...");
+    authenticate(() => createBusinessPartner(businessPartnerData)); // Llama a la función de autenticación y, una vez autenticado, reintenta crear el socio de negocio
+    return; // Sale de la función hasta que se complete la autenticación
+  }
+
+  // Crear la solicitud para crear el socio de negocio
+  const xhr = new XMLHttpRequest(); // Instancia un objeto XMLHttpRequest para realizar una solicitud HTTP
+  xhr.open("POST", "https://192.168.1.10:50000/b1s/v1/BusinessPartners", true); // Configura la solicitud como POST hacia la URL del servicio
+
+  // Configurar encabezados
+  xhr.setRequestHeader("Content-Type", "application/json"); // Establece que los datos enviados serán en formato JSON
+  xhr.withCredentials = true; // Habilita el envío automático de cookies para mantener la sesión
+
+  // Manejar la respuesta del servidor
+  xhr.onload = function () { // Define lo que ocurre cuando el servidor responde
+    if (xhr.status === 201 || xhr.status === 200) { // Si la respuesta indica éxito (201 o 200)
+      const providerData = JSON.parse(xhr.responseText); // Convierte la respuesta en JSON
+      console.log("Socio de negocio creado exitosamente:", providerData); // Muestra un mensaje de éxito en la consola
+      fillProviderForm(providerData); // Llama a una función para llenar un formulario con los datos del socio creado
+    } else if (xhr.status === 401) { // Si la sesión es inválida o ha expirado
+      console.error("Sesión inválida o expirada. Reautenticando...");
+      authenticate(() => createBusinessPartner(businessPartnerData)); // Reautentica y reintenta la solicitud
+    } else if (xhr.status === 400) { // Si hay un error en los datos enviados
+      console.error("Error en los datos enviados:", xhr.responseText); // Muestra el error en la consola
+      alert("Error en los datos enviados. Verifique los valores ingresados."); // Notifica al usuario sobre el error
+    } else { // Cualquier otro error inesperado
+      console.error("Error inesperado al crear el socio de negocio:", xhr.status, xhr.responseText);
+      alert("Hubo un error inesperado. Por favor, intente de nuevo."); // Notifica al usuario de un error general
+    }
+  };
+
+  xhr.onerror = function () { // Define qué ocurre si hay un problema de red o conexión
+    console.error("Error de red o de conexión al servidor.");
+    alert("No se pudo conectar al servidor. Verifique la red o intente más tarde."); // Notifica al usuario sobre problemas de conexión
+  };
+
+  // Enviar los datos del socio de negocio
+  xhr.send(JSON.stringify(businessPartnerData)); // Convierte los datos a JSON y los envía al servidor
+}
+
+// Agregar evento al botón de creación
+document.getElementById("createProviderButton").addEventListener("click", function (e) {
+  e.preventDefault(); // Previene que el botón recargue la página al hacer clic
+
+  // Obteniendo y limpiando los datos del formulario
+  const businessPartnerData = {
+    CardCode: document.getElementById("CardCode").value.trim(), // Obtiene y limpia el código del socio
+    CardName: document.getElementById("CardName").value.trim(), // Obtiene y limpia el nombre del socio
+    CardType: document.getElementById("CardType").value, // Obtiene el tipo de socio (sin limpiar porque es una lista desplegable)
+    GroupCode: parseInt(document.getElementById("GroupCode").value.trim(), 10), // Convierte el código del grupo a un número entero
+    FederalTaxID: document.getElementById("FederalTaxID").value.trim(), // Obtiene y limpia el ID fiscal
+    EmailAddress: document.getElementById("EmailAddress").value.trim(), // Obtiene y limpia el correo electrónico
+    U_VS_NOMCOM: document.getElementById("U_VS_NOMCOM").value.trim(), // Obtiene y limpia un campo personalizado
+    Currency: "##", // Asigna un valor predeterminado para la moneda
+    U_BPP_BPTP: "TPJ", // Asigna un tipo de socio fijo
+    U_BPP_BPTD: "6", // Asigna un tipo de documento fijo
+    U_VS_MAIL_SEC: "facturas.contabilidad@zicsa.com", // Asigna un correo electrónico secundario fijo
+  };
+
+  // Validaciones de los campos obligatorios
+  const requiredFields = ["CardCode", "CardName", "CardType"]; // Define los campos obligatorios
+  for (let field of requiredFields) { // Itera por los campos obligatorios
+    if (!businessPartnerData[field]) { // Si algún campo está vacío
+      alert(`El campo ${field} es obligatorio.`); // Muestra un mensaje de error
+      return; // Detiene la ejecución de la función
+    }
+  }
+
+  // Validación de GroupCode (debe ser un número válido)
+  if (isNaN(businessPartnerData.GroupCode)) { // Verifica si GroupCode no es un número válido
+    alert("El campo GroupCode debe ser un número válido."); // Muestra un mensaje de error
+    return; // Detiene la ejecución de la función
+  }
+
+  // Llamada a la función createBusinessPartner
+  try {
+    createBusinessPartner(businessPartnerData); // Llama a la función para crear el socio de negocio
+  } catch (error) { // Captura cualquier error inesperado
+    console.error("Error al crear el socio de negocio:", error); // Muestra el error en la consola
+    alert("Hubo un error al procesar la solicitud. Por favor, inténtelo de nuevo."); // Notifica al usuario
+  }
+});
 
 
 //UPDATE

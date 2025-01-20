@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Proveedor</title>
+</head>
+<body>
+  <h1>Consulta de Proveedor</h1>
+
+  <form id="providerForm">
+    <label for="providerCode">Código del Proveedor:</label>
+    <input type="text" id="providerCode" name="providerCode" required>
+    <button type="submit">Consultar</button>
+  </form>
+
+  <h2>Información del Proveedor</h2>
+  <table id="dataTable" border="1">
+    <thead>
+      <tr>
+        <th>CardCode</th>
+        <th>CardName</th>
+        <th>CardType</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se insertarán los datos -->
+    </tbody>
+  </table>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -27,7 +27,7 @@
                 Administracion
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="bp.html">Registro de Proveedores</a></li>
+                <li><a class="dropdown-item" href="/BusinessPartner/bp.html">Registro de Proveedores</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -47,60 +47,41 @@
       </div>
   </nav>
 
-    <!-- Formulario -->
- 
-    <form class="row g-3 container-fluid">
-        <h1 class="text-center">Registro de Proveedores</h1>
-        <div class="col-md-6">
-            <label for="CardCode" class="form-label">Código del Proveedor (CardCode)</label>
-            <input type="text" class="form-control" id="CardCode" placeholder="Ingrese el código del proveedor" required>
-            <br><div>
-              <button id="searchProviderButton" type="button" class="btn btn-light">Buscar</button>
-              <button id="createProviderButton" type="button" class="btn btn-light">Crear</button>
-              <button id="updateProviderButton" type="button" class="btn btn-light">Actualizar</button>
-            </div>
+    <!-- Excel to table -->
+    <div class="container-fluid">
+      <h2 class="text-center">Carga Masiva de Proveedores</h2>
+      <div class="row justify-content-md-center">
+          <div class="nav navbar"><b>Excel file</b></div>
+          <div class="card-body">
+              <input  class="btn btn-primary" type="file" id="excelFile" accept=".xlsx, .xls" />
           </div>
-        <div class="col-md-6">
-            <label for="CardName" class="form-label">Nombre del Proveedor (CardName)</label>
-            <input type="text" class="form-control" id="CardName" placeholder="Ingrese el nombre del proveedor" required>
-        </div>
-        <div class="col-md-6">
-            <label for="CardType" class="form-label">Tipo de Proveedor (CardType)</label>
-            <select id="CardType" class="form-label" required>
-              <option value="" class="form-control">Seleccione</option>
-              <option value="cCustomer" class="form-control" id="cCustomer">Cliente</option>
-              <option value="cSupplier" class="form-control" id="cSupplier">Proveedor</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <label for="GroupCode" class="form-label">Codigo de Grupo de Proveedor (GroupCode) </label>
-            <select id="GroupCode" class="form-label" required>
-              <option value="" class="form-control">Seleccione</option>
-              <option value="103" class="form-control" id="ProvExtranjero">Prov. Extranjero</option>
-              <option value="101" class="form-control" id="ProvNacional">Prov. Local</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <label for="FederalTaxID" class="form-label">ID Tributario (FederalTaxID)</label>
-            <input type="text" id="FederalTaxID" class="form-control"placeholder="Ingrese el ID tributario" required>
-        </div>
-        <div class="col-md-6">
-            <label for="EmailAddress" class="form-label">Email Principal (EmailAddress)</label>
-            <input type="email" id="EmailAddress" class="form-control" placeholder="Ingrese el email principal" required>
-        </div>
-        <div class="col-md-6">
-            <label for="U_VS_NOMCOM" class="form-label">Nombre Comercial (U_VS_NOMCOM)</label>
-            <input type="text" id="U_VS_NOMCOM" class="form-control"placeholder="Ingrese el nombre comercial" required>
-        </div>
-        <div>
-
-        </div>
-        <div class="col-12 d-flex justify-content-center p-4">
-          <button type="submit" class="btn btn-light" src="/BusinessPartner/bpm.hmtl" >Crear Proveedores Masivo</button><br>
-        </div>
-  </form>
-    </form>
-
+      </div>
+      <div class="position text-center mt-3">
+          <a href="Plantilla carga de Proveedores.xlsx" download="Plantilla carga de Proveedores.xlsx">
+            <button type="button" class="btn btn-primary">Descargar Plantilla</button>
+          </a>
+      </div>
+      <div>
+        <table id="dataTable" class="styled-table" border="1">
+          <thead class="table-bordered table-dark">
+            <tr>
+              <th>CardCode</th>
+              <th>CardName</th>
+              <th>CardType</th>
+              <th>GroupCode</th>
+              <th>RUC</th>
+              <th>EmailAddress</th>
+              <th>Nombre Comercial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se insertarán los datos -->
+          </tbody>
+        </table>
+      </div>
+    <div class="position text-center mt-3">
+        <button type="button" class="btn btn-light">Migrar</button>
+    </div>
     <!-- Footer -->
 
     <footer class="bg-dark text-white text-center py-3 mt-auto">
@@ -113,9 +94,9 @@
         </ul>
       </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="BusinessP.js"></script>
+    <script src="/BusinessPartner/Bpm.js"></script>
     <script src="/login.js"></script>
 </body>
 </html>

@@ -1,4 +1,44 @@
 /* Barra de navegación */
+/* Estilo de tabla */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+.styled-table thead tr {
+  background-color: #06d7f3; /* Fondo azul */
+  color: #ffffff; /* Texto blanco */
+  text-align: center;
+  font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd; /* Borde gris claro */
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3; /* Filas alternas */
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #06d7f3;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1; /* Efecto hover */
+  cursor: pointer;
+}
 
 nav.navbar{
   padding: 0;
