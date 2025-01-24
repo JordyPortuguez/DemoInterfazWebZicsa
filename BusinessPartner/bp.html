@@ -46,11 +46,10 @@
         </div>
       </div>
   </nav>
-
     <!-- Formulario -->
- 
-    <form class="row g-3 container-fluid">
+    <form id="tab" class="row g-3 container-fluid">
         <h1 class="text-center">Registro de Proveedores</h1>
+        <h3>Dato Generales de Proveedor</h1>
         <div class="col-md-6">
             <label for="CardCode" class="form-label">Código del Proveedor (CardCode)</label>
             <input type="text" class="form-control" id="CardCode" placeholder="Ingrese el código del proveedor" required>
@@ -78,6 +77,8 @@
               <option value="" class="form-control">Seleccione</option>
               <option value="103" class="form-control" id="ProvExtranjero">Prov. Extranjero</option>
               <option value="101" class="form-control" id="ProvNacional">Prov. Local</option>
+              <option value="102" class="form-control" id="ProvExtranjero">Cliente Extranjero</option>
+              <option value="100" class="form-control" id="ProvNacional">Cliente Local</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -92,15 +93,58 @@
             <label for="U_VS_NOMCOM" class="form-label">Nombre Comercial (U_VS_NOMCOM)</label>
             <input type="text" id="U_VS_NOMCOM" class="form-control"placeholder="Ingrese el nombre comercial" required>
         </div>
-        <div>
 
+
+<!-- Direccion de Proveedores -->
+          <h3>Direccion de Proveedores</h1>
+        <div class="col-md-6">
+            <label for="Street" class="form-label">Street</label>
+            <input type="text" class="form-control" id="Street" placeholder="Ingrese la Direccion del proveedor" required>
         </div>
+        <div class="col-md-6">
+          <label for="County" class="form-label">Distrito</label>
+          <input type="text" class="form-control" id="County" placeholder="Ingrese el Distrito del proveedor" required>
+        </div>
+        <div class="col-md-6">
+          <label for="City" class="form-label">Ciudad</label>
+          <input type="text" class="form-control" id="City" placeholder="Ingrese la Ciudad del proveedor" required>
+      </div>
+        <div class="col-md-6">
+        <label for="State" class="form-label">Estado</label>
+        <select id="State" class="form-label" required>
+          <option value="" class="form-control">Seleccione</option>
+            <option value="1" id="1" class="form-control">Amazonas</option>
+            <option value="2" id="2" class="form-control">Áncash</option>
+            <option value="3" id="3" class="form-control">Apurímac</option>
+            <option value="4" id="4" class="form-control">Arequipa</option>
+            <option value="5" id="5" class="form-control">Ayacucho</option>
+            <option value="6" id="6" class="form-control">Cajamarca</option>
+            <option value="7" id="7" class="form-control">Callao</option>
+            <option value="8" id="8" class="form-control">Cusco</option>
+            <option value="9" id="9" class="form-control">Huancavelica</option>
+            <option value="10" id="10" class="form-control">Huánuco</option>
+            <option value="11" id="11" class="form-control">Ica</option>
+            <option value="12" id="12" class="form-control">Junín</option>
+            <option value="13" id="13" class="form-control">La Libertad</option>
+            <option value="14" id="14" class="form-control">Lambayeque</option>
+            <option value="15" id="15" class="form-control">Lima</option>
+            <option value="16" id="16" class="form-control">Loreto</option>
+            <option value="17" id="17" class="form-control">Madre de Dios</option>
+            <option value="18" id="18" class="form-control">Moquegua</option>
+            <option value="19" id="19" class="form-control">Pasco</option>
+            <option value="20" id="20" class="form-control">Piura</option>
+            <option value="21" id="21" class="form-control">Puno</option>
+            <option value="22" id="22" class="form-control">San Martín</option>
+            <option value="23" id="23" class="form-control">Tacna</option>
+            <option value="24" id="24" class="form-control">Tumbes</option>
+            <option value="25" id="25" class="form-control">Ucayali</option>
+        </div>
+
+<!--Masivo-->
         <div class="col-12 d-flex justify-content-center p-4">
           <button onclick="window.location.href='/BusinessPartner/bpm.html';" class="btn btn-light">Crear Proveedores Masivo</button>
-          
         </div>
   </form>
-    </form>
 
     <!-- Footer -->
 

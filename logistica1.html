@@ -49,27 +49,36 @@
 
     <!-- Excel to table -->
     <div class="container-fluid">
-      <h2 class="text-center">Carga Masiva de Articulos</h2>
+      <h2 class="text-center">Carga Masiva de Empleados</h2>
       <div class="row justify-content-md-center">
           <div class="nav navbar"><b>Excel file</b></div>
           <div class="card-body">
-              <input type="file" id="excel_file" accept=".xlsx, .xls" />
+              <input  class="btn btn-primary" type="file" id="excelFile" accept=".xlsx, .xls" />
           </div>
       </div>
       <div class="position text-center mt-3">
-        <a href="Plantilla carga de Articulos.xlsx" download="Plantilla carga de Articulos.xlsx">
-          <button type="button" class="btn btn-primary">Descargar Plantilla</button>
-        </a>
-    </div>
+          <a href="Plantilla carga de Proveedores.xlsx" download="Plantilla carga de Proveedores.xlsx">
+            <button type="button" class="btn btn-primary">Descargar Plantilla</button>
+          </a>
+      </div>
       <div>
-          <table id="excel_data" class="table table-bordered">
-              
-          </table>
+        <table id="dataTable" class="styled-table" border="1">
+          <thead class="table-bordered table-dark">
+            <tr>
+              <th>Nombre</th>
+              <th>Segundo Nombre</th>
+              <th>Apellidos</th>
+              <th>DNI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se insertarán los datos -->
+          </tbody>
+        </table>
       </div>
-      <div class="position text-center mt-3">
-          <button type="button" class="btn btn-light">Migrar</button>
-      </div>
-  </div>
+    <div class="position text-center mt-3">
+        <button type="button" class="btn btn-light">Migrar</button>
+    </div>
 
     <!-- Footer -->
 
@@ -85,6 +94,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script src="/login.js"></script>
 </body>
 </html>
