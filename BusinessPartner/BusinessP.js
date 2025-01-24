@@ -45,6 +45,10 @@ function fillProviderForm(providerData) {
   document.getElementById("FederalTaxID").value = providerData.FederalTaxID || "";
   document.getElementById("EmailAddress").value = providerData.EmailAddress || "";
   document.getElementById("U_VS_NOMCOM").value = providerData.U_VS_NOMCOM || "";
+  document.getElementById("Street").value.trim(),
+  document.getElementById("City").value.trim(),
+  document.getElementById("State").value.trim(),
+  document.getElementById("County").value.trim()
 }
 
 // Agregar evento al botón de búsqueda
@@ -59,11 +63,7 @@ document.getElementById("searchProviderButton").addEventListener("click", functi
 
 
 //POST
-/*Declaracion de variables fijas
-const Currency="##";
-const U_BPP_BPTP="TPJ";
-const U_BPP_BPTD="6";
-const U_VS_MAIL_SEC="facturas.contabilidad@zicsa.com";*/
+// Función para crear un socio de negocio
 
 function createBusinessPartner(businessPartnerData) {
   // Verificar si la sesión es válida
