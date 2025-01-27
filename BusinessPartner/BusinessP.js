@@ -45,10 +45,10 @@ function fillProviderForm(providerData) {
   document.getElementById("FederalTaxID").value = providerData.FederalTaxID || "";
   document.getElementById("EmailAddress").value = providerData.EmailAddress || "";
   document.getElementById("U_VS_NOMCOM").value = providerData.U_VS_NOMCOM || "";
-  document.getElementById("Street").value.trim(),
-  document.getElementById("City").value.trim(),
-  document.getElementById("State").value.trim(),
-  document.getElementById("County").value.trim()
+  document.getElementById("Street").value = providerData.BPAddresses[0].Street || "";
+  document.getElementById("City").value = providerData.BPAddresses[0].City || "";
+  document.getElementById("State").value = providerData.BPAddresses[0].State || "";
+  document.getElementById("County").value = providerData.BPAddresses[0].County || "";
 }
 
 // Agregar evento al botón de búsqueda
@@ -119,7 +119,7 @@ document.getElementById("createProviderButton").addEventListener("click", functi
           AddressName: "FISCAL",
           Street:document.getElementById("Street").value.trim(),
           City: document.getElementById("City").value.trim(),
-          State: document.getElementById("State").value.trim(),
+          State: parseInt(document.getElementById("State").value.trim(), 10),
           Country: "PE",
           County: document.getElementById("County").value.trim(),
           AddressType: "bo_BillTo",
@@ -129,9 +129,9 @@ document.getElementById("createProviderButton").addEventListener("click", functi
         },
         {
           AddressName: "ALMACEN",
-          Street:document.getElementById("Street").value.trim(),
+          Street: document.getElementById("Street").value.trim(),
           City: document.getElementById("City").value.trim(),
-          State: document.getElementById("State").value.trim(),
+          State: parseInt(document.getElementById("State").value.trim(), 10),
           Country: "PE",
           County: document.getElementById("County").value.trim(),
           AddressType: "bo_ShipTo",
@@ -200,7 +200,7 @@ function updateBusinessPartner(businessPartnerData) {
 
   // Crear un nuevo objeto solo con los campos que han cambiado
   const updateData = {};
-  const fields = ['CardName', 'FederalTaxID', 'EmailAddress', 'U_VS_NOMCOM'];
+  const fields = ['CardName', 'FederalTaxID', 'EmailAddress', 'U_VS_NOMCOM', 'Street', 'City', 'County'];
   
   fields.forEach(field => {
     if (businessPartnerData[field] && businessPartnerData[field].trim() !== '') {

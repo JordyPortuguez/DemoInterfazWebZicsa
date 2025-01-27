@@ -28,6 +28,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/BusinessPartner/bp.html">Registro de Proveedores</a></li>
+                <li><a class="dropdown-item" href="/BusinessPartner/bpm.html">Registro de Proveedores Masivo</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -38,15 +39,14 @@
                 Logística
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/logistica-registro-simple.html">Registro de Empleados Simple</a></li> <!-- Se agrego la pagina Logistica1-->
-                <li><a class="dropdown-item" href="/logistica1.html">Registro de Empleados Masivos</a></li>
+                <li><a class="dropdown-item" href="/Logistics/logistica-registro-simple.html">Registro de Empleados Simple</a></li> <!-- Se agrego la pagina Logistica1-->
+                <li><a class="dropdown-item" href="/Logistics/logistica1.html">Registro de Empleados Masivos</a></li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
   </nav>
-
     <!-- Excel to table -->
     <div class="container-fluid">
       <h2 class="text-center">Carga Masiva de Proveedores</h2>
@@ -80,7 +80,7 @@
         </table>
       </div>
     <div class="position text-center mt-3">
-        <button type="button" class="btn btn-light">Migrar</button>
+        <button type="button" id="uploadButton" class="btn btn-light">Migrar</button>
     </div>
     <!-- Footer -->
 
@@ -94,9 +94,9 @@
         </ul>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="/login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/BusinessPartner/Bpm.js"></script>
-    <script src="/login.js"></script>
 </body>
 </html>
