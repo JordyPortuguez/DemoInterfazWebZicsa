@@ -50,6 +50,10 @@
     <!-- Formulario -->
     <form class="row g-3 container-fluid">
         <h1 class="text-center">Registro de Empleados</h1>
+        <div class="col-12">
+          <label for="officeExte" class="form-label">Nro Documento</label>
+          <input type="text" class="form-control" id="OfficeExtension" placeholder="DNI , Carnet de Extranjería" required>
+        </div>
         <div class="col-md-6">
             <label for="firstNamee" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="FirstName" placeholder="Nombre Empleado" required>
@@ -61,10 +65,6 @@
         <div class="col-12">
             <label for="lastNamee" class="form-label">Apellidos</label>
             <input type="text" class="form-control" id="LastName" placeholder="Apellidos Paterno y Materno" required>
-        </div>
-        <div class="col-12">
-            <label for="officeExte" class="form-label">Nro Documento</label>
-            <input type="number" class="form-control" id="OfficeExtension" placeholder="DNI , Carnet de Extranjería" required>
         </div>
         <div class="col-12 d-flex justify-content-center p-4">
             <button type="submit" class="btn btn-primary" id="createEmployee">Registrar</button>
