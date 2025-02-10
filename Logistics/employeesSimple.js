@@ -70,15 +70,14 @@
 
 console.log('Ingresa a archivo javascript');
 const loginUrl = "https://192.168.1.10:50000/b1s/v1/Login";
-  
-const data = {
+const Credenciales = {
   CompanyDB: "SBO_ZICSA_05122024",
   Password: "B1Admin",
   UserName: "manager"
 };
 
 // Convertir el objeto a JSON
-const jsonData = JSON.stringify(data);
+// const jsonData = JSON.stringify(Credenciales);
 
  document.getElementById("createEmployee").addEventListener("click", function (e) {
     e.preventDefault();
@@ -94,16 +93,25 @@ const jsonData = JSON.stringify(data);
 //       alert(error);
 //     }
 //   )
-
 console.log('Ingresa fetch');
 fetch(loginUrl, {
   method: 'POST',
+  mode: "cors",
   headers: {
-      'Content-Type': 'application/json'
-  },
-  body: jsonData
-})
+      'Content-Type': 'application/json'   
+           },
+  body: JSON.stringify(Credenciales)
+     })
 .then(response => response.json())
-.then(data => console.log('Éxito:', data))
-.catch((error) => console.error('Error:', error));
+.then(data => {
+              console.log(data);
+              let sessionId=data.SessionId;
+              console.log("SessionId : "+sessionId);
+              }
+      )
+.catch((error) => {
+                  console.error('Error:', error);
+                  alert("Error");
+                  }
+      )
 });
