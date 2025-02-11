@@ -70,34 +70,34 @@
 
 console.log('Ingresa a archivo javascript');
 const loginUrl = "https://192.168.1.10:50000/b1s/v1/Login";
+const CreateEmployeeUrl = "https://192.168.1.10:50000/b1s/v1/EmployeesInfo";
+let sessionId=null;
 const Credenciales = {
   CompanyDB: "SBO_ZICSA_05122024",
   Password: "B1Admin",
   UserName: "manager"
 };
 
+// const Employee = {
+//   "FirstName": "Elsa",
+//   "LastName": "Patito",
+//   "MiddleName": "Alv",
+//   "OfficeExtension": "999999"
+// };
+
 // Convertir el objeto a JSON
 // const jsonData = JSON.stringify(Credenciales);
 
- document.getElementById("createEmployee").addEventListener("click", function (e) {
+ document.getElementById("Login").addEventListener("click", function (e) 
+ {
     e.preventDefault();
+    console.log('Ingresa fetch');
 
-//function accessServiceLayer(){
-//   fetch("/b1s/v1/BusinessPartners?$select=CardCode, CardName&$top=1")
-//   .then(res => res.json())
-//   .then(
-//     (result) => {
-//       alert("Response from Service Layer:\n" + JSON.stringify(result));
-//     },
-//     (error) => {
-//       alert(error);
-//     }
-//   )
-console.log('Ingresa fetch');
-fetch(loginUrl, {
-  method: 'POST',
-  mode: "cors",
-  headers: {
+    fetch(loginUrl, {
+    method: 'POST',
+    mode: "cors",
+    credentials: 'include',
+    headers: {
       'Content-Type': 'application/json'   
            },
   body: JSON.stringify(Credenciales)
@@ -105,7 +105,7 @@ fetch(loginUrl, {
 .then(response => response.json())
 .then(data => {
               console.log(data);
-              let sessionId=data.SessionId;
+              sessionId=data.SessionId;
               console.log("SessionId : "+sessionId);
               }
       )
@@ -114,4 +114,43 @@ fetch(loginUrl, {
                   alert("Error");
                   }
       )
-});
+  ;   
+    }
+  );
+  document.getElementById("createEmployee").addEventListener("click", function (f)    
+  {
+      f.preventDefault();
+        const Employee = {
+        "FirstName": "Elsa",
+        "LastName": "Patito",
+        "MiddleName": "Alv",
+        "OfficeExtension": "12345678910"
+      };
+
+      console.log("Entra a funcion crear empleados :"+Employee.SessionId);
+      
+      fetch(CreateEmployeeUrl, {
+        method: 'POST',
+        credentials: 'include',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json'   
+                 },
+        body: JSON.stringify(Employee)
+           })
+      .then(response => response.json())
+      .then(data => {
+                    console.log(data);
+                    console.log("Empleado Creado : "+data.EmployeeID);
+                    }
+            )
+      .catch((error) => {
+                         console.error("error"+error);
+                          // alert("Error");
+                        }
+            )
+
+  }
+);
+
+console.log('termina archivo javascript');
