@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Login</title>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button id="loginButton">Login</button>
+    </form>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function (e) {
+            e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+
+            // Obtener los valores de los campos
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Validar los campos
+            if (username === "" || password === "") {
+                alert("Todos los campos son obligatorios.");
+                return;
+            }
+
+            // Si la validación es correcta, envía la solicitud POST con fetch
+            const data = { username, password };
+
+            fetch('https://tu-api.com/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(result => {
+                console.log('Success:', result);
+                // Maneja el resultado exitoso aquí
+            })
+            .catch(error => {
+                console.error('Error occurred:', error);
+                alert(`Error: ${error.message}`);
+            });
+        });
+    </script>
+</body>

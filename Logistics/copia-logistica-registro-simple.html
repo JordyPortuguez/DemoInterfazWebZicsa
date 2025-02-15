@@ -48,31 +48,28 @@
       </div>
   </nav>
     <!-- Formulario -->
-    <form class="row g-3 container-fluid" method="POST" action="https://192.168.1.10:50000/b1s/v1/Login">
+     <form class="row g-3 container-fluid" id="FormularioEmpleado"> 
+
         <h1 class="text-center">Registro de Empleados</h1>
          <div class="col-12">
           <label for="officeExte" class="form-label">Nro Documento</label>
-          <input type="text" class="form-control" id="OfficeExtension" placeholder="DNI , Carnet de Extranjería" required>
+          <input type="text" minlength="8" maxlength = "50" class="form-control" id="OfficeExtension" placeholder="DNI , Carnet de Extranjería"   required>
         </div>
         <div class="col-md-6">
             <label for="firstNamee" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="FirstName" placeholder="Nombre Empleado" required>
+            <input type="text" class="form-control" id="FirstName" placeholder="Nombre Empleado" maxlength = "50" required>
         </div>
         <div class="col-md-6">
             <label for="middleNamee" class="form-label">Segundo Nombre</label>
-            <input type="text" class="form-control" id="MiddleName" placeholder="Segundo Nombre Empleado">
+            <input type="text" class="form-control" id="MiddleName" placeholder="Segundo Nombre Empleado" maxlength = "50">
         </div>
         <div class="col-12">
             <label for="lastNamee" class="form-label">Apellidos</label>
-            <input type="text" class="form-control" id="LastName" placeholder="Apellidos Paterno y Materno" required>
+            <input type="text" class="form-control" id="LastName" placeholder="Apellidos Paterno y Materno" maxlength = "50" required>
         </div> 
         <div class="col-12 d-flex justify-content-center p-4"> 
-         <button type="submit" class="btn btn-primary" id="Login">Login</button>
+         <button type="submit" class="btn btn-primary" id="createEmployee">Crear</button>
         </div>
-       
-        <div class="col-12 d-flex justify-content-center p-4">
-        <button type="submit" class="btn btn-secondary" id="createEmployee">Crear</button>
-        </div> 
 
       </form>
     
@@ -88,7 +85,7 @@
         </div>
     </footer>
 
-    <script src="/Logistics/employeesSimple.js"></script>
+    <script src="/Logistics/copia-employeesSimple.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
      <!-- <script src="/login.js"></script>  -->
   </body>

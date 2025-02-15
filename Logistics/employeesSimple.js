@@ -119,15 +119,16 @@ const Credenciales = {
   );
   document.getElementById("createEmployee").addEventListener("click", function (f)    
   {
-      f.preventDefault();
+         f.preventDefault();
         const Employee = {
-        "FirstName": "Elsa",
-        "LastName": "Patito",
-        "MiddleName": "Alv",
-        "OfficeExtension": "12345678910"
+        "FirstName": document.getElementById("FirstName").value.trim(),
+        "LastName": document.getElementById("LastName").value.trim(),
+        "MiddleName": document.getElementById("MiddleName").value.trim(),
+        "OfficeExtension": document.getElementById("OfficeExtension").value.trim()
+
       };
 
-      console.log("Entra a funcion crear empleados :"+Employee.SessionId);
+      console.log("Entra a funcion crear empleados :");
       
       fetch(CreateEmployeeUrl, {
         method: 'POST',
@@ -145,8 +146,12 @@ const Credenciales = {
                     }
             )
       .catch((error) => {
-                         console.error("error"+error);
-                          // alert("Error");
+                         console.error("erroooooooor :"+error);
+                         alert("error");
+                         alert("error"+error.message);
+                         alert(`Hubo un error al enviar los datos: ${error.message}`);
+                         console.log("errorooo :"+error,message);
+
                         }
             )
 
