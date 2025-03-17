@@ -1,36 +1,36 @@
 
 
 const CreateEmployeeUrl = "https://192.168.1.10:50000/b1s/v1/EmployeesInfo";
-let sessionId=null;
-const Credenciales = {
-  CompanyDB: "SBO_ZICSA_05122024",
-  Password: "B1Admin",
-  UserName: "manager"
-};
+// let sessionId=null;
+// const Credenciales = {
+//   CompanyDB: "SBO_ZICSA_05122024",
+//   Password: "B1Admin",
+//   UserName: "manager"
+// };
 
-    fetch("https://192.168.1.10:50000/b1s/v1/Login", {
-    method: 'POST',
-    mode: "cors",
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'   
-           },
-  body: JSON.stringify(Credenciales)
-     })
-.then(response => response.json())
-.then(data => {
-              console.log(data);
-              sessionId=data.SessionId;
-              console.log("SessionId : "+sessionId);
-              }
-      )
-.catch((error) => {
-                  console.error('Error:', error);
-                  alert("Error");
-                  }
-      )
-  ;   
-  console.log("salio de login");   
+//     fetch("https://192.168.1.10:50000/b1s/v1/Login", {
+//     method: 'POST',
+//     mode: "cors",
+//     credentials: 'include',
+//     headers: {
+//       'Content-Type': 'application/json'   
+//            },
+//   body: JSON.stringify(Credenciales)
+//      })
+// .then(response => response.json())
+// .then(data => {
+//               console.log(data);
+//               sessionId=data.SessionId;
+//               console.log("SessionId : "+sessionId);
+//               }
+//       )
+// .catch((error) => {
+//                   console.error('Error:', error);
+//                   alert("Error");
+//                   }
+//       )
+//   ;   
+//   console.log("salio de login");   
   const formulario = document.getElementById('FormularioEmpleado');
 
   formulario.addEventListener('submit', (evento) => {
@@ -42,6 +42,8 @@ const Credenciales = {
     "MiddleName": document.getElementById("MiddleName").value.trim(),
     "OfficeExtension": document.getElementById("OfficeExtension").value.trim()
   };
+  console.log("ingresa fetch de employee"); 
+
   fetch(CreateEmployeeUrl, {
     method: 'POST',
     credentials: 'include',
@@ -54,12 +56,12 @@ const Credenciales = {
   .then(response => response.json())
   .then(data => {
                 console.log(data);
-                if(data.EmployeeID='null')
-                {
-                alert(data.error.message.value);
+                if(data.EmployeeID)
+                {          
+                alert("Empleado Creado : "+data.EmployeeID);
                 }
                 else{
-                alert("Empleado Creado : "+data.EmployeeID);
+                  alert(data.error.message.value);
                     }
                 }
         )

@@ -20,9 +20,15 @@
     <form class="form-signin" id="SignInForm">
       <img class="mb-4" src="/img/LogoZicsa.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión	</h1>
-      <div id="loadingSpinner" class="spinner-border text-primary" role="status" style="display: none;">
-      <span class="sr-only"></span>
-    </div>
+      
+      <div id="loadingContainer" style="display: none;">
+        <div id="loadingSpinner" class="spinner-border text-primary" role="status">
+            <span class="sr-only"></span>  
+        </div>
+        <p id="loadingText" class="mt-2">Cargando...</p>
+      </div>
+      
+
       <label for="inputUserCode" class="sr-only">Código de Usuario</label>
       <input type="text" id="inputUserCode" class="form-control" placeholder="Código de Usuario" minlength = "4" maxlength = "20" required autofocus>
       <label for="inputPassword" class="sr-only">Contraseña</label>

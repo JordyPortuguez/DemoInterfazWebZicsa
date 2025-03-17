@@ -1,9 +1,9 @@
 
 const formulario = document.getElementById('SignInForm');
-const spinner = document.getElementById('loadingSpinner');
+const spinner = document.getElementById('loadingContainer');
 formulario.addEventListener('submit',  async (evento) => {
     evento.preventDefault();
-    spinner.style.display = 'block'; // Mostrar spinner
+    spinner.style.display = 'flex'; // Mostrar spinner
 const USER_CREDENTIALS = {
         CompanyDB: "SBO_ZICSA_05122024",
         UserName: document.getElementById("inputUserCode").value.trim(),
