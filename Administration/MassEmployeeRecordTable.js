@@ -105,9 +105,19 @@ catch (error) {
             .then(response => response.json())
             .then(data => {
                 const resultCell = rows[rowIndex].getElementsByTagName('td')[5];
-                resultCell.textContent = "Empleado Creado : "+data.EmployeeID;
+                if(data.EmployeeID)
+                {
+                    resultCell.textContent = "Empleado Creado : "+data.EmployeeID;
+                    console.log("Empleado Creado : "+data.EmployeeID);
+                }    
+                else
+                {
+                    resultCell.textContent = data.error.message.value;
+                    console.log(resultCell.textContent );
+
+                }
                 sendEmployee(rowIndex + 1); // Procesar la siguiente fila
-                console.log("Empleado Creado : "+data.EmployeeID);
+                
             })
             .catch(error => {
                 const resultCell = rows[rowIndex].getElementsByTagName('td')[5];
