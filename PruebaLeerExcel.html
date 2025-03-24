@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Leer y mostrar datos de Excel en una tabla</title>
+    <!-- use version 0.20.3 -->
+    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    <style>
+        /* Estilos CSS para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leer y mostrar datos de Excel en una tabla</h1>
+    <input type="file" id="inputArchivo">
+    <table id="tablaDatos"></table>
+    <script>
+        // Leer y mostrar datos de Excel en una tabla
+        const inputArchivo = document.getElementById('inputArchivo');
+        const tablaDatos = document.getElementById('tablaDatos');
+
+        inputArchivo.addEventListener('change', (evento) => {
+            const archivo = evento.target.files[0];
+            if (archivo) {
+                const lector = new FileReader();
+
+                lector.onload = (evento) => {
+                    const datos = new Uint8Array(evento.target.result);
+                    const libroTrabajo = XLSX.read(datos, { type: 'array' });
+                    const nombreHoja = libroTrabajo.SheetNames[0]; // Obtener el nombre de la primera hoja
+                    const hoja = libroTrabajo.Sheets[nombreHoja];
+                    const datosExcel = XLSX.utils.sheet_to_json(hoja, { header: 1 }); // Convertir hoja a JSON
+
+                    // Crear tabla HTML
+                    crearTabla(datosExcel);
+                };
+
+                lector.readAsArrayBuffer(archivo);
+            }
+        });
+
+        function crearTabla(datos) {
+            tablaDatos.innerHTML = ''; // Limpiar tabla anterior
+
+            if (datos.length > 0) {
+                const encabezados = datos[0]; // Primera fila como encabezados
+                let filaEncabezados = '<tr>';
+                encabezados.forEach((encabezado) => {
+                    filaEncabezados += `<th>${encabezado}</th>`;
+                });
+                filaEncabezados += '</tr>';
+                tablaDatos.innerHTML += filaEncabezados;
+
+                for (let i = 1; i < datos.length; i++) {
+                    let filaDatos = '<tr>';
+                    datos[i].forEach((valor) => {
+                        filaDatos += `<td>${valor}</td>`;
+                    });
+                    filaDatos += '</tr>';
+                    tablaDatos.innerHTML += filaDatos;
+                }
+            }
+        }
+    </script>
+    <!-- use version 0.20.3 -->
+    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>
