@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Web Zicsa</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CSS -->
+    <link href="/style.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas { 
+            max-width: 800px; 
+            margin-top: 30px; 
+        }
+        .summary-info {
+            font-weight: bold;
+            color: #0056b3;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">
+          <img src="/img/LogoZicsa.png" width="80" alt="Logo Corporativo Zicsa"> 
+        </a>      
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav d-flex justify-content-left align-items-left">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Administración
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/BusinessPartner/bp.html">Registro de Proveedores</a></li>
+                <li><a class="dropdown-item" href="/BusinessPartner/bpm.html">Registro de Proveedores Masivo</a></li>
+                <li><a class="dropdown-item" href="/Administration/IndividualEmployeeRecord.html">Registro Individual de Empleado</a></li>
+                <li><a class="dropdown-item" href="/Administration/MassEmployeeRecordTable.html">Registro Masivo de Empleados Formato Tabla</a></li>
+                <li><a class="dropdown-item" href="/Administration/EmployeeSpreadsheetImport.html">Registro Masivo de Empleados Usando Hoja de Cálculo</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tesorería</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Logística
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/Logistics/logistica-registro-simple.html">Registro de Empleados Simple</a></li>
+                <li><a class="dropdown-item" href="/Logistics/logistica1.html">Registro de Empleados Masivos</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Analytics SAP B1 - Business Partners</h2>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="dateFrom" class="form-label">Fecha desde:</label>
+                <input type="date" id="dateFrom" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="dateTo" class="form-label">Fecha hasta:</label>
+                <input type="date" id="dateTo" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label for="tipoEntidad" class="form-label">Tipo entidad:</label>
+                <select id="tipoEntidad" class="form-select">
+                    <option value="todos">Todos</option>
+                    <option value="clientes">Clientes</option>
+                    <option value="proveedores">Proveedores</option>
+                </select>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button id="btnActualizar" class="btn btn-primary">Actualizar gráficos</button>
+            </div>
+        </div>
+
+        <div id="summaryInfo" class="summary-info"></div>
+
+        <div class="row">
+            <div class="col-12">
+                <canvas id="tiempoPromedioChart" height="150"></canvas>
+            </div>
+            <div class="col-12 mt-4">
+                <canvas id="cantidadRegistrosChart" height="150"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2024 Zicsa Contratistas Generales. Todos los derechos reservados.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#" class="text-white">Política de Privacidad</a></li>
+                <li class="list-inline-item"><a href="#" class="text-white">Términos de Servicio</a></li>
+                <li class="list-inline-item"><a href="#" class="text-white">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/login.js"></script>
+</body>
+</html>
